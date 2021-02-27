@@ -89,7 +89,8 @@ class WeiBoText(object):
         date_time = ""
         if data.find("今天") == 0:
             date_time = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-            date_time = date_time + " " + data.replace("今天", "")
+            data.replace("今天", "")
+            date_time = date_time + " " + data.replace("今天", "")[0:5]
         elif data.find("分钟前") > 0:
             m = data[0:data.find('分钟前')]
             date_time = (datetime.datetime.now() - datetime.timedelta(minutes=int(m))).strftime("%Y-%m-%d %H:%M")
